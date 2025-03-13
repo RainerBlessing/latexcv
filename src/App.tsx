@@ -1,21 +1,24 @@
-import { Routes, Route } from 'react-router-dom'
-import Home from './pages/Home'
+import { Routes, Route } from 'react-router-dom';
+import HomePage from './pages/Home/HomePage';
+import EditorPage from './pages/Editor/EditorPage';
+import PreviewPage from './pages/Preview/PreviewPage';
+import NotFoundPage from './pages/NotFound/NotFoundPage';
+import Navbar from './components/Navbar/Navbar';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-100 p-4">
-      <header className="bg-white shadow-sm rounded-lg p-4 mb-6">
-        <h1 className="text-3xl font-bold text-gray-800">CV Builder</h1>
-        <p className="text-gray-600">Create beautiful LaTeX CVs with ease</p>
-      </header>
-
-      <main>
+    <div className="min-h-screen bg-gray-100">
+      <Navbar />
+      <main className="container mx-auto px-4 py-6">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/editor" element={<EditorPage />} />
+          <Route path="/preview" element={<PreviewPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
