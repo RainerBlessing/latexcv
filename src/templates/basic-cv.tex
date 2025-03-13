@@ -1,0 +1,75 @@
+\documentclass[a4paper,11pt]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=2cm]{geometry}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{xcolor}
+
+% Colors
+\definecolor{primary}{RGB}{25, 25, 112}
+\definecolor{secondary}{RGB}{70, 130, 180}
+
+% Formatting commands
+\hypersetup{colorlinks=true, linkcolor=primary, urlcolor=primary}
+
+% Custom section command
+\newcommand{\cvSection}[1]{
+  \vspace{0.5cm}
+  {\color{primary}\Large\textbf{#1}}
+  \vspace{0.1cm}
+  \hrule
+  \vspace{0.3cm}
+}
+
+% Custom entry for experience/education
+\newcommand{\cvEntry}[4]{
+  \textbf{#1} \hfill \textit{#2} \\
+  \textbf{#3} \\
+  #4
+  \vspace{0.3cm}
+}
+
+% Document
+\begin{document}
+
+% Header
+{\Huge\textbf{{{name}}}} \\
+\vspace{0.2cm}
+{{title}} \\
+\vspace{0.2cm}
+\begin{tabular}{l l}
+Email: & \href{mailto:{{email}}}{{{email}}} \\
+Phone: & {{phone}} \\
+Location: & {{location}} \\
+\end{tabular}
+
+% Summary
+\cvSection{Zusammenfassung}
+{{summary}}
+
+% Experience
+\cvSection{Berufserfahrung}
+{{experience}}
+
+% Education
+\cvSection{Ausbildung}
+{{education}}
+
+% Skills
+\cvSection{Fähigkeiten}
+\begin{itemize}[leftmargin=*]
+{{skills}}
+\end{itemize}
+
+% Languages
+\cvSection{Sprachen}
+\begin{itemize}[leftmargin=*]
+{{languages}}
+\end{itemize}
+
+\end{document}

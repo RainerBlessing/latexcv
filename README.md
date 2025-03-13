@@ -1,54 +1,81 @@
-# React + TypeScript + Vite
+# LaTeX CV Backend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Ein einfaches Node.js-Backend mit Express und TypeScript für die LaTeX-Generierung von Lebensläufen.
 
-Currently, two official plugins are available:
+## Funktionalitäten
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Gestaltet für die LaTeX-Generierung ohne Datenspeicherung
+- RESTful API für CV-Generierung
+- Einfache Erweiterbarkeit für neue LaTeX-Vorlagen
 
-## Expanding the ESLint configuration
+## Entwicklung
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Voraussetzungen
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- Node.js (v14 oder höher)
+- npm oder yarn
+
+### Installation
+
+```bash
+# Repository klonen und ins Verzeichnis wechseln
+git clone <repository-url>
+cd latex-cv-backend
+
+# Abhängigkeiten installieren
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Entwicklungsserver starten
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+npm run dev
+```
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+Der Server startet auf Port 3001 (oder dem in der Umgebungsvariable PORT angegebenen Port).
+
+### Tests ausführen
+
+```bash
+npm test
+```
+
+### Bauen für Produktion
+
+```bash
+npm run build
+```
+
+## API-Dokumentation
+
+### Health Check
+
+- URL: `/api/health`
+- Methode: `GET`
+- Beschreibung: Prüft den Serverstatus
+- Antwort: `200 OK`
+  ```json
+  {
+    "status": "success",
+    "message": "Server is healthy",
+    "timestamp": "2023-12-01T12:00:00.000Z",
+    "uptime": 123.45
+  }
+  ```
+
+## Projektstruktur
+
+```
+latex-cv-backend/
+├── src/
+│   ├── controllers/     # Request handlers
+│   ├── services/        # Business logic
+│   ├── utils/           # Hilfsfunktionen
+│   ├── middleware/      # Express middleware
+│   ├── routes/          # API routes
+│   ├── templates/       # LaTeX-Vorlagen
+│   ├── app.ts           # Express app configuration
+│   └── server.ts        # Server entry point
+├── tests/               # Testfiles
+└── ...
 ```
