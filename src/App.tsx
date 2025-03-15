@@ -1,9 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
-import HomePage from './pages/Home/HomePage';
-import EditorPage from './pages/Editor/EditorPage';
-import PreviewPage from './pages/Preview/PreviewPage';
-import NotFoundPage from './pages/NotFound/NotFoundPage';
-import Navbar from './components/Navbar/Navbar';
+import HomePage from './pages/Home/HomePage.tsx';
+import EditorPage from './pages/Editor/EditorPage.tsx';
+import PreviewPage from './pages/Preview/PreviewPage.tsx';
+import NotFoundPage from './pages/NotFound/NotFoundPage.tsx';
+import Navbar from './components/Navbar/Navbar.tsx';
 
 function App() {
   return (

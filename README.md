@@ -1,9 +1,11 @@
-# LaTeX CV Backend
+# LaTeX CV Builder
 
-Ein einfaches Node.js-Backend mit Express und TypeScript für die LaTeX-Generierung von Lebensläufen.
+Ein vollständiges System mit React-Frontend und Node.js-Backend für die Erstellung professioneller LaTeX-Lebensläufe.
 
 ## Funktionalitäten
 
+- Benutzerfreundliche Oberfläche zur Erstellung von LaTeX-Lebensläufen
+- Vorschau der erstellten Dokumente
 - Gestaltet für die LaTeX-Generierung ohne Datenspeicherung
 - RESTful API für CV-Generierung
 - Einfache Erweiterbarkeit für neue LaTeX-Vorlagen
@@ -12,7 +14,7 @@ Ein einfaches Node.js-Backend mit Express und TypeScript für die LaTeX-Generier
 
 ### Voraussetzungen
 
-- Node.js (v14 oder höher)
+- Node.js (v18 oder höher)
 - npm oder yarn
 
 ### Installation
@@ -20,30 +22,46 @@ Ein einfaches Node.js-Backend mit Express und TypeScript für die LaTeX-Generier
 ```bash
 # Repository klonen und ins Verzeichnis wechseln
 git clone <repository-url>
-cd latex-cv-backend
+cd latex-cv-builder
 
 # Abhängigkeiten installieren
 npm install
 ```
 
-### Entwicklungsserver starten
+### Frontend-Entwicklungsserver starten
 
 ```bash
+# Startet den Frontend-Entwicklungsserver
+npx vite --port 3173
+```
+
+Das Frontend ist dann unter http://localhost:3173 erreichbar.
+
+### Backend-Entwicklungsserver starten
+
+```bash
+# Startet den Backend-Entwicklungsserver
 npm run dev
 ```
 
-Der Server startet auf Port 3001 (oder dem in der Umgebungsvariable PORT angegebenen Port).
+Der Backend-Server startet auf Port 3001 (oder dem in der Umgebungsvariable PORT angegebenen Port).
+
+### Beide Server gleichzeitig starten (Produktion)
+
+```bash
+# Frontend bauen
+npm run build
+
+# Backend starten, das auch das Frontend ausliefert
+npm run start
+```
+
+In diesem Fall ist die Anwendung über http://localhost:3001 erreichbar.
 
 ### Tests ausführen
 
 ```bash
 npm test
-```
-
-### Bauen für Produktion
-
-```bash
-npm run build
 ```
 
 ## API-Dokumentation
@@ -66,16 +84,36 @@ npm run build
 ## Projektstruktur
 
 ```
-latex-cv-backend/
+latex-cv-builder/
+├── public/              # Statische Dateien
 ├── src/
-│   ├── controllers/     # Request handlers
-│   ├── services/        # Business logic
-│   ├── utils/           # Hilfsfunktionen
-│   ├── middleware/      # Express middleware
-│   ├── routes/          # API routes
+│   ├── assets/          # Frontend-Assets
+│   ├── components/      # React-Komponenten
+│   ├── contexts/        # React-Kontexte
+│   ├── controllers/     # Backend-Controller
+│   ├── hooks/           # React-Hooks
+│   ├── middleware/      # Express-Middleware
+│   ├── pages/           # React-Seiten
+│   ├── routes/          # API-Routen
+│   ├── services/        # Business-Logik
 │   ├── templates/       # LaTeX-Vorlagen
-│   ├── app.ts           # Express app configuration
-│   └── server.ts        # Server entry point
-├── tests/               # Testfiles
+│   ├── tests/           # Testdateien
+│   ├── types/           # TypeScript-Typdefinitionen
+│   ├── utils/           # Hilfsfunktionen
+│   ├── App.tsx          # Haupt-React-Komponente
+│   ├── app.ts           # Express-App-Konfiguration
+│   ├── main.tsx         # Frontend-Einstiegspunkt
+│   └── server.ts        # Server-Einstiegspunkt
+├── tests/               # Backend-Tests
 └── ...
 ```
+
+## Fehlerbehebung
+
+Wenn das Frontend nicht korrekt angezeigt wird:
+
+1. Stellen Sie sicher, dass das Frontend gebaut wurde (`npm run build`)
+2. Überprüfen Sie, ob der Backend-Server läuft und auf die Frontend-Dateien zugreifen kann
+3. Bei Entwicklungsproblemen starten Sie das Frontend direkt mit `npx vite --port 3173`
+
+Bei Backend-Fehlern überprüfen Sie die Konsolenausgabe des Servers und stellen Sie sicher, dass alle Module korrekt installiert sind.

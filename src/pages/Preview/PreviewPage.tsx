@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const PreviewPage = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const handleBackToEditor = () => {
@@ -12,20 +14,20 @@ const PreviewPage = () => {
       {/* Preview Header */}
       <div className="bg-white shadow-sm rounded-lg p-4 mb-6">
         <div className="flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-gray-800">CV Preview</h1>
+          <h1 className="text-2xl font-bold text-gray-800">{t('preview.title')}</h1>
           <div className="space-x-4">
-            <button 
+            <button
               className="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition-colors"
               onClick={handleBackToEditor}
               data-testid="back-button"
             >
-              Back to Editor
+              {t('preview.backButton')}
             </button>
-            <button 
+            <button
               className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors"
               data-testid="download-button"
             >
-              Download PDF
+              {t('preview.downloadButton')}
             </button>
           </div>
         </div>
@@ -38,19 +40,19 @@ const PreviewPage = () => {
           <div className="max-w-2xl mx-auto">
             <h1 className="text-3xl font-bold mb-2">John Doe</h1>
             <p className="text-gray-600 mb-4">Software Engineer</p>
-            
+
             <div className="grid grid-cols-2 gap-4 text-sm mb-6">
               <div>Email: john.doe@example.com</div>
               <div>Phone: +1 (555) 123-4567</div>
               <div>Location: New York, NY</div>
               <div>Website: johndoe.com</div>
             </div>
-            
+
             <div className="mb-6">
               <h2 className="text-xl font-bold border-b border-gray-300 pb-1 mb-3">Summary</h2>
               <p>Experienced software engineer with expertise in frontend development and a passion for creating intuitive user interfaces.</p>
             </div>
-            
+
             <div className="mb-6">
               <h2 className="text-xl font-bold border-b border-gray-300 pb-1 mb-3">Experience</h2>
               <div className="mb-4">
@@ -66,7 +68,7 @@ const PreviewPage = () => {
                 </ul>
               </div>
             </div>
-            
+
             <div className="mb-6">
               <h2 className="text-xl font-bold border-b border-gray-300 pb-1 mb-3">Education</h2>
               <div className="mb-4">
@@ -77,7 +79,7 @@ const PreviewPage = () => {
                 <div>University of Technology</div>
               </div>
             </div>
-            
+
             <div>
               <h2 className="text-xl font-bold border-b border-gray-300 pb-1 mb-3">Skills</h2>
               <div className="flex flex-wrap gap-2">
@@ -95,16 +97,16 @@ const PreviewPage = () => {
 
       {/* Export Options */}
       <div className="bg-white shadow-sm rounded-lg p-6" data-testid="export-options">
-        <h2 className="text-xl font-semibold mb-4">Export Options</h2>
+        <h2 className="text-xl font-semibold mb-4">{t('preview.exportOptions.title')}</h2>
         <div className="flex flex-wrap gap-4">
           <button className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors">
-            Download as PDF
+            {t('preview.exportOptions.downloadPdf')}
           </button>
           <button className="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition-colors">
-            Export LaTeX Source
+            {t('preview.exportOptions.exportLatex')}
           </button>
           <button className="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition-colors">
-            Print CV
+            {t('preview.exportOptions.printCv')}
           </button>
         </div>
       </div>

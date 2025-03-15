@@ -1,0 +1,72 @@
+{
+  "navbar": {
+    "home": "Startseite",
+    "editor": "Editor",
+    "preview": "Vorschau",
+    "appName": "LaTeX Lebenslauf-Generator"
+  },
+  "home": {
+    "title": "Willkommen beim LaTeX Lebenslauf-Generator",
+    "description": "Erstellen Sie professionelle, schön gesetzte Lebensläufe in wenigen Minuten mit unserem LaTeX-basierten Lebenslauf-Generator. Keine LaTeX-Kenntnisse erforderlich!",
+    "createButtonText": "Neuen Lebenslauf erstellen",
+    "importText": "Haben Sie bereits einen Lebenslauf? Sie können auch einen vorhandenen importieren.",
+    "features": {
+      "templates": {
+        "title": "Professionelle Vorlagen",
+        "description": "Wählen Sie aus einer Vielzahl professionell gestalteter LaTeX-Vorlagen."
+      },
+      "easyToUse": {
+        "title": "Einfach zu bedienen",
+        "description": "Einfache Oberfläche zum Erstellen und Bearbeiten Ihres Lebenslaufs ohne LaTeX-Kenntnisse."
+      },
+      "exportOptions": {
+        "title": "Export-Optionen",
+        "description": "Laden Sie Ihren Lebenslauf als PDF herunter oder exportieren Sie den LaTeX-Quellcode."
+      }
+    }
+  },
+  "editor": {
+    "title": "Lebenslauf-Editor",
+    "saveButton": "Speichern",
+    "previewButton": "Vorschau",
+    "sections": {
+      "title": "Abschnitte",
+      "personal": "Persönliche Daten",
+      "education": "Ausbildung",
+      "experience": "Berufserfahrung",
+      "skills": "Fähigkeiten",
+      "languages": "Sprachen",
+      "projects": "Projekte"
+    },
+    "personalSection": {
+      "title": "Persönliche Daten",
+      "fullName": "Vollständiger Name",
+      "fullNamePlaceholder": "z.B. Max Mustermann",
+      "email": "E-Mail",
+      "emailPlaceholder": "z.B. max.mustermann@example.com",
+      "phone": "Telefon",
+      "phonePlaceholder": "z.B. +49 123 456789",
+      "location": "Ort",
+      "locationPlaceholder": "z.B. Berlin, Deutschland"
+    },
+    "sectionPlaceholder": "Felder für {{section}} werden hier angezeigt."
+  },
+  "preview": {
+    "title": "Lebenslauf-Vorschau",
+    "backButton": "Zurück zum Editor",
+    "downloadButton": "PDF herunterladen",
+    "exportOptions": {
+      "title": "Export-Optionen",
+      "downloadPdf": "Als PDF herunterladen",
+      "exportLatex": "LaTeX-Quellcode exportieren",
+      "printCv": "Lebenslauf drucken"
+    }
+  },
+  "notFound": {
+    "statusCode": "404",
+    "title": "Seite nicht gefunden",
+    "message": "Entschuldigung, die gesuchte Seite existiert nicht oder wurde verschoben.",
+    "homeButton": "Zurück zur Startseite",
+    "editorButton": "Zum Editor"
+  }
+}

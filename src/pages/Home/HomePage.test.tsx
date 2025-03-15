@@ -1,57 +1,64 @@
-import { useNavigate } from 'react-router-dom';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
+import HomePage from './HomePage';
 
-const HomePage = () => {
-  const navigate = useNavigate();
+// Mock useNavigate
+const mockedUsedNavigate = jest.fn();
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: () => mockedUsedNavigate,
+}));
 
-  const handleCreateNewCV = () => {
-    navigate('/editor');
-  };
+// Mock the react-i18next hook
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: (key: string) => {
+      const translations = {
+        'home.title': 'Welcome to LaTeX CV Builder',
+        'home.description': 'Create professional, beautifully typeset CVs in minutes with our LaTeX-powered CV builder.',
+        'home.createButtonText': 'Create New CV',
+        'home.importText': 'Already have a CV? You can also import an existing one.',
+        'home.features.templates.title': 'Professional Templates',
+        'home.features.templates.description': 'Choose from a variety of professionally designed LaTeX templates.',
+        'home.features.easyToUse.title': 'Easy to Use',
+        'home.features.easyToUse.description': 'Simple interface to create and edit your CV without knowing LaTeX.',
+        'home.features.exportOptions.title': 'Export Options',
+        'home.features.exportOptions.description': 'Download your CV as PDF, or export the LaTeX source code.'
+      };
+      return translations[key] || key;
+    },
+    i18n: {
+      language: 'en'
+    }
+  })
+}));
 
-  return (
-    <div className="max-w-3xl mx-auto text-center">
-      <div className="bg-white shadow-lg rounded-lg p-8 mt-10">
-        <h1 className="text-3xl font-bold text-gray-800 mb-6" data-testid="home-title">
-          Welcome to LaTeX CV Builder
-        </h1>
+describe('HomePage Component', () => {
+  beforeEach(() => {
+    // Clear all mocks before each test
+    jest.clearAllMocks();
+  });
 
-        <p className="text-lg text-gray-600 mb-8" data-testid="home-description">
-          Create professional, beautifully typeset CVs in minutes with our LaTeX-powered CV builder.
-          No LaTeX knowledge required!
-        </p>
+  it('renders welcome message and create button', () => {
+    render(
+      <BrowserRouter>
+        <HomePage />
+      </BrowserRouter>
+    );
 
-        <div className="space-y-4">
-          <button
-            onClick={handleCreateNewCV}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300"
-            data-testid="create-cv-button"
-          >
-            Create New CV
-          </button>
+    expect(screen.getByTestId('home-title')).toBeInTheDocument();
+    expect(screen.getByTestId('home-description')).toBeInTheDocument();
+    expect(screen.getByTestId('create-cv-button')).toBeInTheDocument();
+  });
 
-          <div className="mt-8 text-sm text-gray-500">
-            <p>Already have a CV? You can also import an existing one.</p>
-          </div>
-        </div>
-      </div>
+  it('navigates to editor page when create button is clicked', () => {
+    render(
+      <BrowserRouter>
+        <HomePage />
+      </BrowserRouter>
+    );
 
-      <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h3 className="font-bold text-lg mb-2">Professional Templates</h3>
-          <p className="text-gray-600">Choose from a variety of professionally designed LaTeX templates.</p>
-        </div>
-
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h3 className="font-bold text-lg mb-2">Easy to Use</h3>
-          <p className="text-gray-600">Simple interface to create and edit your CV without knowing LaTeX.</p>
-        </div>
-
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h3 className="font-bold text-lg mb-2">Export Options</h3>
-          <p className="text-gray-600">Download your CV as PDF, or export the LaTeX source code.</p>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default HomePage;
+    fireEvent.click(screen.getByTestId('create-cv-button'));
+    expect(mockedUsedNavigate).toHaveBeenCalledWith('/editor');
+  });
+});

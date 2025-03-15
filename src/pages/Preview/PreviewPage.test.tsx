@@ -9,6 +9,27 @@ jest.mock('react-router-dom', () => ({
   useNavigate: () => mockedUsedNavigate,
 }));
 
+// Mock the react-i18next hook
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: (key: string) => {
+      const translations = {
+        'preview.title': 'CV Preview',
+        'preview.backButton': 'Back to Editor',
+        'preview.downloadButton': 'Download PDF',
+        'preview.exportOptions.title': 'Export Options',
+        'preview.exportOptions.downloadPdf': 'Download as PDF',
+        'preview.exportOptions.exportLatex': 'Export LaTeX Source',
+        'preview.exportOptions.printCv': 'Print CV'
+      };
+      return translations[key] || key;
+    },
+    i18n: {
+      language: 'en'
+    }
+  })
+}));
+
 describe('PreviewPage Component', () => {
   beforeEach(() => {
     // Clear all mocks before each test
@@ -55,5 +76,19 @@ describe('PreviewPage Component', () => {
     expect(screen.getByText('Experience')).toBeInTheDocument();
     expect(screen.getByText('Education')).toBeInTheDocument();
     expect(screen.getByText('Skills')).toBeInTheDocument();
+  });
+
+  it('displays translated export options', () => {
+    render(
+      <BrowserRouter>
+        <PreviewPage />
+      </BrowserRouter>
+    );
+
+    // Check if translated export options are displayed
+    expect(screen.getByText('Export Options')).toBeInTheDocument();
+    expect(screen.getByText('Download as PDF')).toBeInTheDocument();
+    expect(screen.getByText('Export LaTeX Source')).toBeInTheDocument();
+    expect(screen.getByText('Print CV')).toBeInTheDocument();
   });
 });

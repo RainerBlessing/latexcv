@@ -1,0 +1,72 @@
+{
+  "navbar": {
+    "home": "Home",
+    "editor": "Editor",
+    "preview": "Preview",
+    "appName": "LaTeX CV Builder"
+  },
+  "home": {
+    "title": "Welcome to LaTeX CV Builder",
+    "description": "Create professional, beautifully typeset CVs in minutes with our LaTeX-powered CV builder. No LaTeX knowledge required!",
+    "createButtonText": "Create New CV",
+    "importText": "Already have a CV? You can also import an existing one.",
+    "features": {
+      "templates": {
+        "title": "Professional Templates",
+        "description": "Choose from a variety of professionally designed LaTeX templates."
+      },
+      "easyToUse": {
+        "title": "Easy to Use",
+        "description": "Simple interface to create and edit your CV without knowing LaTeX."
+      },
+      "exportOptions": {
+        "title": "Export Options",
+        "description": "Download your CV as PDF, or export the LaTeX source code."
+      }
+    }
+  },
+  "editor": {
+    "title": "CV Editor",
+    "saveButton": "Save",
+    "previewButton": "Preview",
+    "sections": {
+      "title": "Sections",
+      "personal": "Personal",
+      "education": "Education",
+      "experience": "Experience",
+      "skills": "Skills",
+      "languages": "Languages",
+      "projects": "Projects"
+    },
+    "personalSection": {
+      "title": "Personal Information",
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "e.g., John Doe",
+      "email": "Email",
+      "emailPlaceholder": "e.g., john.doe@example.com",
+      "phone": "Phone",
+      "phonePlaceholder": "e.g., +1 (555) 123-4567",
+      "location": "Location",
+      "locationPlaceholder": "e.g., New York, NY"
+    },
+    "sectionPlaceholder": "Select fields for {{section}} will appear here."
+  },
+  "preview": {
+    "title": "CV Preview",
+    "backButton": "Back to Editor",
+    "downloadButton": "Download PDF",
+    "exportOptions": {
+      "title": "Export Options",
+      "downloadPdf": "Download as PDF",
+      "exportLatex": "Export LaTeX Source",
+      "printCv": "Print CV"
+    }
+  },
+  "notFound": {
+    "statusCode": "404",
+    "title": "Page Not Found",
+    "message": "Sorry, the page you are looking for does not exist or has been moved.",
+    "homeButton": "Return to Home",
+    "editorButton": "Go to Editor"
+  }
+}
